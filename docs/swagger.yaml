@@ -1,0 +1,649 @@
+basePath: /
+definitions:
+  models.Credentials:
+    properties:
+      password:
+        type: string
+      username:
+        type: string
+    type: object
+  models.InventoryDetails:
+    properties:
+      product_id:
+        type: integer
+      quantity:
+        type: integer
+      transaction_amount:
+        type: number
+      transaction_date:
+        type: string
+      transaction_description:
+        type: string
+      transaction_id:
+        type: integer
+      transaction_notes:
+        type: string
+      transaction_status:
+        type: string
+      transaction_type:
+        type: string
+    type: object
+  models.InventoryMaster:
+    properties:
+      brand:
+        type: string
+      category:
+        type: string
+      date_added:
+        type: string
+      last_updated:
+        type: string
+      product_id:
+        type: integer
+      product_name:
+        type: string
+      remarks:
+        type: string
+      stock_in_hand:
+        type: integer
+      supplier_id:
+        type: integer
+      unit_price:
+        type: number
+    type: object
+  models.InventoryOverall:
+    properties:
+      brand:
+        type: string
+      category:
+        type: string
+      date_added:
+        type: string
+      last_updated:
+        type: string
+      product_id:
+        type: integer
+      product_name:
+        type: string
+      quantity:
+        type: integer
+      remarks:
+        type: string
+      stock_in_hand:
+        type: integer
+      supplier_id:
+        type: integer
+      transaction_amount:
+        type: number
+      transaction_date:
+        type: string
+      transaction_description:
+        type: string
+      transaction_id:
+        type: integer
+      transaction_notes:
+        type: string
+      transaction_status:
+        type: string
+      transaction_type:
+        type: string
+      unit_price:
+        type: number
+    type: object
+host: localhost:8000
+info:
+  contact: {}
+  description: This is an API for managing inventory
+  title: Inventory Management API
+  version: "1.0"
+paths:
+  /inventory-details:
+    get:
+      consumes:
+      - application/json
+      description: Get a list of all inventory details records
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/models.InventoryDetails'
+            type: array
+        "500":
+          description: Internal Server Error
+          schema:
+            additionalProperties:
+              type: string
+            type: object
+      summary: Fetch all inventory details records
+      tags:
+      - inventory_details
+    post:
+      consumes:
+      - application/json
+      description: Add a new record to the inventory details table
+      parameters:
+      - description: Inventory Details Data
+        in: body
+        name: inventory
+        required: true
+        schema:
+          $ref: '#/definitions/models.InventoryDetails'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/models.InventoryDetails'
+        "400":
+          description: Bad Request
+          schema:
+            additionalProperties:
+              type: string
+            type: object
+      summary: Create a new inventory details record
+      tags:
+      - inventory_details
+  /inventory-details-filter:
+    get:
+      consumes:
+      - application/json
+      description: Retrieve inventory details records based on query parameters
+      parameters:
+      - description: Transaction ID
+        in: query
+        name: transaction_id
+        type: string
+      - description: Product ID
+        in: query
+        name: product_id
+        type: string
+      - description: Transaction Type
+        in: query
+        name: transaction_type
+        type: string
+      - description: Quantity
+        in: query
+        name: quantity
+        type: string
+      - description: Transaction Date
+        in: query
+        name: transaction_date
+        type: string
+      - description: Transaction Description
+        in: query
+        name: transaction_description
+        type: string
+      - description: Transaction Amount
+        in: query
+        name: transaction_amount
+        type: string
+      - description: Transaction Status
+        in: query
+        name: transaction_status
+        type: string
+      - description: Transaction Notes
+        in: query
+        name: transaction_notes
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/models.InventoryDetails'
+            type: array
+        "500":
+          description: Internal Server Error
+          schema:
+            additionalProperties:
+              type: string
+            type: object
+      summary: Filter inventory details records
+      tags:
+      - inventory_details
+  /inventory-details-overall:
+    get:
+      consumes:
+      - application/json
+      description: Get a comprehensive list of inventory and transaction details
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/models.InventoryOverall'
+            type: array
+        "500":
+          description: Internal Server Error
+          schema:
+            additionalProperties:
+              type: string
+            type: object
+      summary: Fetch overall inventory details
+      tags:
+      - inventory_overall
+  /inventory-details-overall-filter:
+    get:
+      consumes:
+      - application/json
+      description: Retrieve overall inventory records based on query parameters
+      parameters:
+      - description: Product ID
+        in: query
+        name: product_id
+        type: string
+      - description: Product Name
+        in: query
+        name: product_name
+        type: string
+      - description: Category
+        in: query
+        name: category
+        type: string
+      - description: Brand
+        in: query
+        name: brand
+        type: string
+      - description: Stock In Hand
+        in: query
+        name: stock_in_hand
+        type: string
+      - description: Unit Price
+        in: query
+        name: unit_price
+        type: string
+      - description: Supplier ID
+        in: query
+        name: supplier_id
+        type: string
+      - description: Date Added
+        in: query
+        name: date_added
+        type: string
+      - description: Last Updated
+        in: query
+        name: last_updated
+        type: string
+      - description: Remarks
+        in: query
+        name: remarks
+        type: string
+      - description: Transaction ID
+        in: query
+        name: transaction_id
+        type: string
+      - description: Transaction Type
+        in: query
+        name: transaction_type
+        type: string
+      - description: Quantity
+        in: query
+        name: quantity
+        type: string
+      - description: Transaction Date
+        in: query
+        name: transaction_date
+        type: string
+      - description: Transaction Description
+        in: query
+        name: transaction_description
+        type: string
+      - description: Transaction Amount
+        in: query
+        name: transaction_amount
+        type: string
+      - description: Transaction Status
+        in: query
+        name: transaction_status
+        type: string
+      - description: Transaction Notes
+        in: query
+        name: transaction_notes
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/models.InventoryOverall'
+            type: array
+        "500":
+          description: Internal Server Error
+          schema:
+            additionalProperties:
+              type: string
+            type: object
+      summary: Filter overall inventory details
+      tags:
+      - inventory_overall
+  /inventory-details/{id}:
+    delete:
+      consumes:
+      - application/json
+      description: Remove an inventory details record from the database
+      parameters:
+      - description: Transaction ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "204":
+          description: No Content
+        "404":
+          description: Not Found
+          schema:
+            additionalProperties:
+              type: string
+            type: object
+      summary: Delete inventory details record by ID
+      tags:
+      - inventory_details
+    get:
+      consumes:
+      - application/json
+      description: Get a single inventory details record using its ID
+      parameters:
+      - description: Transaction ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.InventoryDetails'
+        "404":
+          description: Not Found
+          schema:
+            additionalProperties:
+              type: string
+            type: object
+      summary: Fetch inventory details by ID
+      tags:
+      - inventory_details
+    put:
+      consumes:
+      - application/json
+      description: Modify an existing inventory details record
+      parameters:
+      - description: Transaction ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      - description: Updated Inventory Details Data
+        in: body
+        name: inventory
+        required: true
+        schema:
+          $ref: '#/definitions/models.InventoryDetails'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.InventoryDetails'
+        "400":
+          description: Bad Request
+          schema:
+            additionalProperties:
+              type: string
+            type: object
+        "404":
+          description: Not Found
+          schema:
+            additionalProperties:
+              type: string
+            type: object
+      summary: Update inventory details record by ID
+      tags:
+      - inventory_details
+  /inventory-master:
+    get:
+      consumes:
+      - application/json
+      description: Fetch all inventory master records from the database
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/models.InventoryMaster'
+            type: array
+        "500":
+          description: Internal Server Error
+          schema:
+            additionalProperties:
+              type: string
+            type: object
+      summary: Get all inventory master records
+      tags:
+      - inventory_master
+    post:
+      consumes:
+      - application/json
+      description: Add a new record to the inventory master table
+      parameters:
+      - description: Inventory Master Data
+        in: body
+        name: inventory
+        required: true
+        schema:
+          $ref: '#/definitions/models.InventoryMaster'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/models.InventoryMaster'
+        "400":
+          description: Bad Request
+          schema:
+            additionalProperties:
+              type: string
+            type: object
+      summary: Create a new inventory master record
+      tags:
+      - inventory_master
+  /inventory-master-filter:
+    get:
+      consumes:
+      - application/json
+      description: Retrieve inventory master records based on query parameters
+      parameters:
+      - description: Product ID
+        in: query
+        name: product_id
+        type: string
+      - description: Product Name
+        in: query
+        name: product_name
+        type: string
+      - description: Category
+        in: query
+        name: category
+        type: string
+      - description: Brand
+        in: query
+        name: brand
+        type: string
+      - description: Stock In Hand
+        in: query
+        name: stock_in_hand
+        type: string
+      - description: Unit Price
+        in: query
+        name: unit_price
+        type: string
+      - description: Supplier ID
+        in: query
+        name: supplier_id
+        type: string
+      - description: Date Added
+        in: query
+        name: date_added
+        type: string
+      - description: Last Updated
+        in: query
+        name: last_updated
+        type: string
+      - description: Remarks
+        in: query
+        name: remarks
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/models.InventoryMaster'
+            type: array
+        "500":
+          description: Internal Server Error
+          schema:
+            additionalProperties:
+              type: string
+            type: object
+      summary: Filter inventory master records
+      tags:
+      - inventory_master
+  /inventory-master/{id}:
+    delete:
+      consumes:
+      - application/json
+      description: Remove an inventory master record from the database
+      parameters:
+      - description: Product ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "204":
+          description: No Content
+        "404":
+          description: Not Found
+          schema:
+            additionalProperties:
+              type: string
+            type: object
+      summary: Delete inventory master record by ID
+      tags:
+      - inventory_master
+    get:
+      consumes:
+      - application/json
+      description: Get a single inventory master record using its ID
+      parameters:
+      - description: Product ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.InventoryMaster'
+        "404":
+          description: Not Found
+          schema:
+            additionalProperties:
+              type: string
+            type: object
+      summary: Fetch inventory master record by ID
+      tags:
+      - inventory_master
+    put:
+      consumes:
+      - application/json
+      description: Modify an existing inventory master record
+      parameters:
+      - description: Product ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      - description: Updated Inventory Master Data
+        in: body
+        name: inventory
+        required: true
+        schema:
+          $ref: '#/definitions/models.InventoryMaster'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.InventoryMaster'
+        "400":
+          description: Bad Request
+          schema:
+            additionalProperties:
+              type: string
+            type: object
+        "404":
+          description: Not Found
+          schema:
+            additionalProperties:
+              type: string
+            type: object
+      summary: Update inventory master record by ID
+      tags:
+      - inventory_master
+  /login:
+    post:
+      consumes:
+      - application/json
+      description: User Login
+      parameters:
+      - description: Credentials Data
+        in: body
+        name: credentials
+        required: true
+        schema:
+          $ref: '#/definitions/models.Credentials'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/models.Credentials'
+        "400":
+          description: Bad Request
+          schema:
+            additionalProperties:
+              type: string
+            type: object
+      summary: User Login
+      tags:
+      - user
+swagger: "2.0"
