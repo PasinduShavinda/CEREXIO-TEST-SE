@@ -17,6 +17,7 @@ import (
 // @Summary Get all inventory master records
 // @Description Fetch all inventory master records from the database
 // @Tags inventory_master
+// @Security BearerAuth
 // @Accept  json
 // @Produce  json
 // @Success 200 {array} models.InventoryMaster
@@ -60,6 +61,7 @@ func GetAllInventoryMaster(w http.ResponseWriter, r *http.Request) {
 // @Summary Fetch inventory master record by ID
 // @Description Get a single inventory master record using its ID
 // @Tags inventory_master
+// @Security BearerAuth
 // @Accept json
 // @Produce json
 // @Param id path int true "Product ID"
@@ -98,6 +100,7 @@ func GetInventoryMasterById(w http.ResponseWriter, r *http.Request) {
 // @Summary Filter inventory master records
 // @Description Retrieve inventory master records based on query parameters
 // @Tags inventory_master
+// @Security BearerAuth
 // @Accept json
 // @Produce json
 // @Param product_id query string false "Product ID"
@@ -197,6 +200,7 @@ func GetFilteredInventoryMaster(w http.ResponseWriter, r *http.Request) {
 // @Summary Create a new inventory master record
 // @Description Add a new record to the inventory master table
 // @Tags inventory_master
+// @Security BearerAuth
 // @Accept json
 // @Produce json
 // @Param inventory body models.InventoryMaster true "Inventory Master Data"
@@ -235,6 +239,7 @@ func CreateInventoryMaster(w http.ResponseWriter, r *http.Request) {
 // @Summary Update inventory master record by ID
 // @Description Modify an existing inventory master record
 // @Tags inventory_master
+// @Security BearerAuth
 // @Accept json
 // @Produce json
 // @Param id path int true "Product ID"
@@ -270,6 +275,7 @@ func UpdateInventoryMaster(w http.ResponseWriter, r *http.Request) {
 // @Summary Delete inventory master record by ID
 // @Description Remove an inventory master record from the database
 // @Tags inventory_master
+// @Security BearerAuth
 // @Accept json
 // @Produce json
 // @Param id path int true "Product ID"

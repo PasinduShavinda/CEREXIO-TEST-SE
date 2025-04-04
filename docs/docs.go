@@ -498,6 +498,11 @@ const docTemplate = `{
         },
         "/inventory-master": {
             "get": {
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ],
                 "description": "Fetch all inventory master records from the database",
                 "consumes": [
                     "application/json"
@@ -531,6 +536,11 @@ const docTemplate = `{
                 }
             },
             "post": {
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ],
                 "description": "Add a new record to the inventory master table",
                 "consumes": [
                     "application/json"
@@ -574,6 +584,11 @@ const docTemplate = `{
         },
         "/inventory-master-filter": {
             "get": {
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ],
                 "description": "Retrieve inventory master records based on query parameters",
                 "consumes": [
                     "application/json"
@@ -671,6 +686,11 @@ const docTemplate = `{
         },
         "/inventory-master/{id}": {
             "get": {
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ],
                 "description": "Get a single inventory master record using its ID",
                 "consumes": [
                     "application/json"
@@ -710,6 +730,11 @@ const docTemplate = `{
                 }
             },
             "put": {
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ],
                 "description": "Modify an existing inventory master record",
                 "consumes": [
                     "application/json"
@@ -767,6 +792,11 @@ const docTemplate = `{
                 }
             },
             "delete": {
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ],
                 "description": "Remove an inventory master record from the database",
                 "consumes": [
                     "application/json"
@@ -984,6 +1014,13 @@ const docTemplate = `{
                     "type": "number"
                 }
             }
+        }
+    },
+    "securityDefinitions": {
+        "BearerAuth": {
+            "type": "apiKey",
+            "name": "Authorization",
+            "in": "header"
         }
     }
 }`

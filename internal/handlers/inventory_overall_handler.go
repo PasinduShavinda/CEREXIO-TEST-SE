@@ -13,6 +13,7 @@ import (
 // @Summary Fetch overall inventory details
 // @Description Get a comprehensive list of inventory and transaction details
 // @Tags inventory_overall
+// @Security BearerAuth
 // @Accept json
 // @Produce json
 // @Success 200 {array} models.InventoryOverall
@@ -84,6 +85,7 @@ func GetOverallInventoryDetails(w http.ResponseWriter, r *http.Request) {
 // @Summary Filter overall inventory details
 // @Description Retrieve overall inventory records based on query parameters
 // @Tags inventory_overall
+// @Security BearerAuth
 // @Accept json
 // @Produce json
 // @Param product_id query string false "Product ID"

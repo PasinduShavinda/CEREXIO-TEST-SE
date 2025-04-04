@@ -492,6 +492,11 @@
         },
         "/inventory-master": {
             "get": {
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ],
                 "description": "Fetch all inventory master records from the database",
                 "consumes": [
                     "application/json"
@@ -525,6 +530,11 @@
                 }
             },
             "post": {
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ],
                 "description": "Add a new record to the inventory master table",
                 "consumes": [
                     "application/json"
@@ -568,6 +578,11 @@
         },
         "/inventory-master-filter": {
             "get": {
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ],
                 "description": "Retrieve inventory master records based on query parameters",
                 "consumes": [
                     "application/json"
@@ -665,6 +680,11 @@
         },
         "/inventory-master/{id}": {
             "get": {
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ],
                 "description": "Get a single inventory master record using its ID",
                 "consumes": [
                     "application/json"
@@ -704,6 +724,11 @@
                 }
             },
             "put": {
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ],
                 "description": "Modify an existing inventory master record",
                 "consumes": [
                     "application/json"
@@ -761,6 +786,11 @@
                 }
             },
             "delete": {
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ],
                 "description": "Remove an inventory master record from the database",
                 "consumes": [
                     "application/json"
@@ -978,6 +1008,13 @@
                     "type": "number"
                 }
             }
+        }
+    },
+    "securityDefinitions": {
+        "BearerAuth": {
+            "type": "apiKey",
+            "name": "Authorization",
+            "in": "header"
         }
     }
 }

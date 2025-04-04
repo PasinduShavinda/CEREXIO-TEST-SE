@@ -16,6 +16,7 @@ import (
 // @Summary Fetch all inventory details records
 // @Description Get a list of all inventory details records
 // @Tags inventory_details
+// @Security BearerAuth
 // @Accept json
 // @Produce json
 // @Success 200 {array} models.InventoryDetails
@@ -55,7 +56,8 @@ func GetAllInventoryDetails(w http.ResponseWriter, r *http.Request) {
 // OK Tested
 // @Summary Fetch inventory details by ID
 // @Description Get a single inventory details record using its ID
-// @Tags inventory_details
+// @Tags inventory_details\
+// @Security BearerAuth
 // @Accept json
 // @Produce json
 // @Param id path int true "Transaction ID"
@@ -90,6 +92,7 @@ func GetInventoryDetailsById(w http.ResponseWriter, r *http.Request) {
 // @Summary Filter inventory details records
 // @Description Retrieve inventory details records based on query parameters
 // @Tags inventory_details
+// @Security BearerAuth
 // @Accept json
 // @Produce json
 // @Param transaction_id query string false "Transaction ID"
@@ -182,6 +185,7 @@ func GetFilteredInventoryDetails(w http.ResponseWriter, r *http.Request) {
 // @Summary Create a new inventory details record
 // @Description Add a new record to the inventory details table
 // @Tags inventory_details
+// @Security BearerAuth
 // @Accept json
 // @Produce json
 // @Param inventory body models.InventoryDetails true "Inventory Details Data"
@@ -219,6 +223,7 @@ func CreateInventoryDetails(w http.ResponseWriter, r *http.Request) {
 // @Summary Update inventory details record by ID
 // @Description Modify an existing inventory details record
 // @Tags inventory_details
+// @Security BearerAuth
 // @Accept json
 // @Produce json
 // @Param id path int true "Transaction ID"
@@ -251,6 +256,7 @@ func UpdateInventoryDetails(w http.ResponseWriter, r *http.Request) {
 // @Summary Delete inventory details record by ID
 // @Description Remove an inventory details record from the database
 // @Tags inventory_details
+// @Security BearerAuth
 // @Accept json
 // @Produce json
 // @Param id path int true "Transaction ID"

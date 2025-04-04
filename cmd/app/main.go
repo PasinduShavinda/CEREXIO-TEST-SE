@@ -14,6 +14,10 @@ import (
 // @description This is an API for managing inventory
 // @host localhost:8000
 // @BasePath /
+
+// @securityDefinitions.apikey BearerAuth
+// @in header
+// @name Authorization
 func main() {
 	// Initialize database connection
 	db.ConnectDB()

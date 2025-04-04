@@ -435,6 +435,8 @@ paths:
             additionalProperties:
               type: string
             type: object
+      security:
+      - BearerAuth: []
       summary: Get all inventory master records
       tags:
       - inventory_master
@@ -462,6 +464,8 @@ paths:
             additionalProperties:
               type: string
             type: object
+      security:
+      - BearerAuth: []
       summary: Create a new inventory master record
       tags:
       - inventory_master
@@ -526,6 +530,8 @@ paths:
             additionalProperties:
               type: string
             type: object
+      security:
+      - BearerAuth: []
       summary: Filter inventory master records
       tags:
       - inventory_master
@@ -551,6 +557,8 @@ paths:
             additionalProperties:
               type: string
             type: object
+      security:
+      - BearerAuth: []
       summary: Delete inventory master record by ID
       tags:
       - inventory_master
@@ -577,6 +585,8 @@ paths:
             additionalProperties:
               type: string
             type: object
+      security:
+      - BearerAuth: []
       summary: Fetch inventory master record by ID
       tags:
       - inventory_master
@@ -615,6 +625,8 @@ paths:
             additionalProperties:
               type: string
             type: object
+      security:
+      - BearerAuth: []
       summary: Update inventory master record by ID
       tags:
       - inventory_master
@@ -646,4 +658,9 @@ paths:
       summary: User Login
       tags:
       - user
+securityDefinitions:
+  BearerAuth:
+    in: header
+    name: Authorization
+    type: apiKey
 swagger: "2.0"
